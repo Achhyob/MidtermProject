@@ -39,11 +39,24 @@ public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+       /* switch (item.getItemId()) {
+            case R.id.action_red:
+                welcomeLayout.setBackgroundColor(Color.RED);
+                return true;
+            case R.id.action_green:
+                welcomeLayout.setBackgroundColor(Color.GREEN);
+                return true;
+            case R.id.action_yellow:
+                welcomeLayout.setBackgroundColor(Color.YELLOW);
+                return true;
+            default:
 
-            return super.onOptionsItemSelected(item);
+                }
+*/
 
-
+        return super.onOptionsItemSelected(item);
     }
 }
+
 
 
