@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -18,14 +19,14 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class WelcomeActivity extends AppCompatActivity {
 
-    RelativeLayout welcomeLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_welcome);
-        welcomeLayout = findViewById(R.id.Welcome);
+
         Intent myintent = getIntent();
 
     }
@@ -34,29 +35,60 @@ public class WelcomeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater my = getMenuInflater();
         my.inflate(R.menu.mymenu, menu);
+        MenuItem redItem = menu.findItem(R.id.action_red);
+        redItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                onOptionsItemSelected(item);
+                return true;
+            }
+        });
+
+        MenuItem greenItem = menu.findItem(R.id.action_green);
+        greenItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                onOptionsItemSelected(item);
+                return true;
+            }
+        });
+
+        MenuItem yellowItem = menu.findItem(R.id.action_yellow);
+        yellowItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                onOptionsItemSelected(item);
+                return true;
+            }
+        });
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-       /* switch (item.getItemId()) {
-            case R.id.action_red:
-                welcomeLayout.setBackgroundColor(Color.RED);
-                return true;
-            case R.id.action_green:
-                welcomeLayout.setBackgroundColor(Color.GREEN);
-                return true;
-            case R.id.action_yellow:
-                welcomeLayout.setBackgroundColor(Color.YELLOW);
-                return true;
-            default:
+        int id = item.getItemId();
 
-                }
-*/
-
-        return super.onOptionsItemSelected(item);
+        if (id == R.id.action_red) {
+            changeLayoutColor(Color.RED);
+            return true;
+        } else if (id == R.id.action_green) {
+            changeLayoutColor(Color.GREEN);
+            return true;
+        } else if (id == R.id.action_yellow) {
+            changeLayoutColor(Color.YELLOW);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
+
+    private void changeLayoutColor(int color) {
+        View view = findViewById(R.id.Welcome);
+        view.setBackgroundColor(color);
+    }
+
 }
+
 
 
 
